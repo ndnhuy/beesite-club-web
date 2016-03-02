@@ -1,0 +1,83 @@
+
+
+<div id = "mainpage">
+<!--Thanh menu bên phải gồ: sing in, newest post, viewcount... -->
+<div id = "sidebar">
+	<div id="sidebar-header1" align="center"><b>Log In</b></div><!--close sidebar-content1-->
+	<div id="sidebar-item">
+		<form data-ng-if="memberCtrl.authenticated == false">
+			<p>{{memberCtrl.error}}</p>
+			<p>{{memberCtrl.registerError}}</p>
+			<table style="width:100%">
+			  <tr>
+			    <td>Usernames:</td>
+			    <td><input type="text" name="username" data-ng-model="memberCtrl.username"></td> 
+			  </tr>
+			  <tr>
+			    <td>Password:</td>
+			    <td><input type="text" name="password" data-ng-model="memberCtrl.password"></td> 
+			  </tr>
+			  <tr data-ng-if="memberCtrl.showRegister == true">
+			    <td>Email:</td>
+			    <td><input type="text" name="email" data-ng-model="memberCtrl.email" ></td> 
+			  </tr>
+			  <tr data-ng-if="memberCtrl.showRegister == true">
+			    <td>Name:</td>
+			    <td><input type="text" name="name" data-ng-model="memberCtrl.name" ></td> 
+			  </tr>
+			</table>
+
+		<center>
+			<button type="button" data-ng-click="memberCtrl.login()" data-ng-if="memberCtrl.showRegister == false">Login</button>
+			<button type="button" data-ng-click="memberCtrl.showRegisterForm()" data-ng-if="memberCtrl.showRegister == false">Signup</button>
+			<button type="button" data-ng-click="memberCtrl.register()" data-ng-if="memberCtrl.showRegister == true">Signup</button>
+			<button type="button" data-ng-click="memberCtrl.showLoginForm()" data-ng-if="memberCtrl.showRegister == true">Cancel</button>
+			<br>
+		</center>
+		</form>
+
+		<form data-ng-if="memberCtrl.authenticated == true">
+		<center>
+			Hello {{memberCtrl.username}}
+			<button data-ng-click="memberCtrl.logout()">Log out</button>
+		</center>
+		</form>
+	</div><!--close sidebar-item1-->
+	<div id="sidebar-header1" ><b>Search</b></div><!--sidebar-header2 close-->
+	<div id="sidebar-item">
+		<form>
+		<center>
+			<input type="text" name="txbSearch" size="35"><button type="button">Search</button>
+			<br>
+		</center>
+		</form>
+	</div><!--close sidebar-item2-->
+</div><!--close sidebar-->
+
+<!--Nơi mình cho nội dung vô-->
+<div id = "contentpage">
+	<div id="content2">
+        <div class="content_item2">
+        		<h2>Members list</h2>
+            	<div class="content_container2" data-ng-repeat="member in memberCtrl.members">
+			 		 	<img src="https://scontent-sin1-1.xx.fbcdn.net/hphotos-xaf1/v/t1.0-9/10678794_634468786670685_7272149362742982279_n.jpg?oh=bd26b880303ce9dba0241852adecf0d1&oe=5710474F"/>
+			  			<h4>{{member.name}}</h4>
+			   	
+            </div><!--close content_container-->
+		
+		</div><!--close content item-->
+    </div><!--close content-->
+</div><!--close contentpage-->
+
+</div><!--close main page-->
+
+<!--Thông tin nhóm-->
+<div id = "footer">
+	Trường Đại học Khoa học tự nhiên<br>
+	Câu lạc bộ tiếng Anh BEE Club<br>	
+	<hr>
+	<center>1212154_Phạm Thanh Huy</center>
+	<center>1212397_Đoàn Thị Bích Thùy</center>
+	<center>1212148_Nguyễn Đạt Nhật Huy</center>
+</div>
+

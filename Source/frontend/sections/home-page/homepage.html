@@ -1,0 +1,86 @@
+
+<div id = "mainpage">
+<!--Thanh menu bên phải gồ: sing in, newest post, viewcount... -->
+
+<div id = "sidebar">
+	<div id="sidebar-header1" align="center"><b>Log In</b></div><!--close sidebar-content1-->
+	<div id="sidebar-item">
+		<form data-ng-if="homeCtrl.authenticated == false">
+			<p>{{homeCtrl.error}}</p>
+			<p>{{homeCtrl.registerError}}</p>
+			<table style="width:100%">
+			  <tr>
+			    <td>Usernames:</td>
+			    <td><input type="text" name="username" data-ng-model="homeCtrl.username"></td> 
+			  </tr>
+			  <tr>
+			    <td>Password:</td>
+			    <td><input type="text" name="password" data-ng-model="homeCtrl.password"></td> 
+			  </tr>
+			  <tr data-ng-if="homeCtrl.showRegister == true">
+			    <td>Email:</td>
+			    <td><input type="text" name="email" data-ng-model="homeCtrl.email" ></td> 
+			  </tr>
+			  <tr data-ng-if="homeCtrl.showRegister == true">
+			    <td>Name:</td>
+			    <td><input type="text" name="name" data-ng-model="homeCtrl.name" ></td> 
+			  </tr>
+			</table>
+
+		<center>
+			<button type="button" data-ng-click="homeCtrl.login()" data-ng-if="homeCtrl.showRegister == false">Login</button>
+			<button type="button" data-ng-click="homeCtrl.showRegisterForm()" data-ng-if="homeCtrl.showRegister == false">Signup</button>
+			<button type="button" data-ng-click="homeCtrl.register()" data-ng-if="homeCtrl.showRegister == true">Signup</button>
+			<button type="button" data-ng-click="homeCtrl.showLoginForm()" data-ng-if="homeCtrl.showRegister == true">Cancel</button>
+			<br>
+		</center>
+		</form>
+		<form data-ng-if="homeCtrl.authenticated == true">
+		<center>
+			Hello {{homeCtrl.username}}
+			<button data-ng-click="homeCtrl.logout()">Log out</button>
+		</center>
+		</form>
+	</div><!--close sidebar-item1-->
+	<div id="sidebar-header1" ><b>Search</b></div><!--sidebar-header2 close-->
+	<div id="sidebar-item">
+		<form>
+		<center>
+			<input type="text" name="txbSearch" size="35"><button type="button">Search</button>
+			<br>
+		</center>
+		</form>
+	</div><!--close sidebar-item2-->
+</div><!--close sidebar-->
+
+<!--Nơi mình cho nội dung vô-->
+<div id = "contentpage">
+	<div id = "about">
+		<h1>About BEE Club</h1>
+		<p>
+		BEE Club is the official english club of HCM US.<br>
+		It has over 50 members and currently running many projects and events, some of which has many applicants even from other universities.<br>
+		It has had a great contribution to help students improve their English skills.<br>	
+		</p>
+	</div>
+	<div id = "video-style">
+		<video width="100%" height="100%" controls>
+			<source src="images/intro.mp4" type="video/mp4">
+			<source src="images/intro.ogg" type="video/ogg">
+			Your browser do not support video tag
+		</video>
+	</div>
+</div><!--close contentpage-->
+
+</div><!--close main page-->
+
+<!--Thông tin nhóm-->
+<div id = "footer">
+	Trường Đại học Khoa học tự nhiên<br>
+	Câu lạc bộ tiếng Anh BEE Club<br>	
+	<hr>
+	<center>1212154_Phạm Thanh Huy</center>
+	<center>1212397_Đoàn Thị Bích Thùy</center>
+	<center>1212152_Nguễn Nhật Huy</center>
+</div>
+

@@ -1,0 +1,49 @@
+body
+{ 
+	background-image: url(../images/bg/background.jpg);
+}
+div
+{
+	display: block;
+}
+h1, h2, h3, h4, h5, h6 
+{ font: normal 175% Arial, Helvetica, sans-serif;
+  color: #000;
+  text-shadow: 1px 1px #fff;
+  text-align: center;
+  letter-spacing: 1px;
+  margin: 10px;
+}
+
+h2
+{ font: normal 165% Arial, Helvetica, sans-serif;
+}
+
+h3
+{ font: normal 130% Arial, Helvetica, sans-serif;
+}
+p
+{
+	font: normal 80% Arial, Helvetica, sans-serif;
+	text-align: center;
+}
+img{
+ 	border: 0;
+	height: 100%;
+	width: 100%;
+}
+form
+{
+	margin: 15px 0px 15px 0px;
+}
+#main, #header, #banner, #menubar, #site_content, #footer, #content_bottom {
+	margin-left: auto;
+	margin-right: auto;
+}
+#mainpage{
+	width: 80%;
+	overflow: hidden;
+	margin: 0 auto;
+	background: transparent;
+	border-radius: 15px 15px 0px 0px;
+}

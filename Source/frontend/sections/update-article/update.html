@@ -1,0 +1,73 @@
+<div id = "mainpage">
+<!--Thanh menu bên phải gồm: sign in, newest post, viewcount... -->
+<div id = "sidebar">
+	<div id="sidebar-header1" align="center"><b>Log In</b></div><!--close sidebar-content1-->
+	<div id="sidebar-item">
+		<form data-ng-if="<updateCtrl class="aut"></updateCtrl>henticated == false">
+
+			<p>{{updateCtrl.error}}</p>
+			<p>{{updateCtrl.registerError}}</p>
+			<table style="width:100%">
+			  <tr>
+			    <td>Usernames:</td>
+			    <td><input type="text" name="username" data-ng-model="updateCtrl.username"></td> 
+			  </tr>
+			  <tr>
+			    <td>Password:</td>
+			    <td><input type="text" name="password" data-ng-model="updateCtrl.password"></td> 
+			  </tr>
+			  <tr data-ng-if="updateCtrl.showRegister == true">
+			    <td>Email:</td>
+			    <td><input type="text" name="email" data-ng-model="updateCtrl.email" ></td> 
+			  </tr>
+			  <tr data-ng-if="updateCtrl.showRegister == true">
+			    <td>Name:</td>
+			    <td><input type="text" name="name" data-ng-model="updateCtrl.name" ></td> 
+			  </tr>
+			</table>
+
+		<center>
+			<button type="button" data-ng-click="updateCtrl.login()" data-ng-if="updateCtrl.showRegister == false">Login</button>
+			<button type="button" data-ng-click="updateCtrl.showRegisterForm()" data-ng-if="updateCtrl.showRegister == false">Signup</button>
+			<button type="button" data-ng-click="updateCtrl.register()" data-ng-if="updateCtrl.showRegister == true">Signup</button>
+			<button type="button" data-ng-click="updateCtrl.showLoginForm()" data-ng-if="updateCtrl.showRegister == true">Cancel</button>
+			<br>
+		</center>
+		</form>
+		<form data-ng-if="updateCtrl.authenticated == true">
+		<center>
+			Hello {{updateCtrl.username}}
+			<button data-ng-click="updateCtrl.logout()">Log out</button>
+		</center>
+		</form>
+
+	</div><!--close sidebar-item1-->
+	<div id="sidebar-header1" ><b>Search</b></div><!--sidebar-header2 close-->
+	<div id="sidebar-item">
+		<form>
+		<center>
+			<input type="text" name="txbSearch" size="35"><button type="button">Search</button>
+			<br>
+		</center>
+		</form>
+	</div><!--close sidebar-item2-->
+	
+</div><!--close sidebar-->
+
+<!--Nơi mình cho nội dung vô-->
+<div id = "contentpage">
+	<div class="form_settings">
+            <h2>Update article</h2>
+            <br><hr><br>
+			<p><span><b>Title</b></span>
+			<input data-ng-model="updateCtrl.title" class="contact" type="text" name="post_name" value="" /></p>
+			<p><span><b>Tag</b></span>
+			<input data-ng-model="updateCtrl.tag" class="contact" type="text" name="post_type" value="" /></p>
+			<b>Content</b> <br><br>
+			<textarea data-ng-model="updateCtrl.content" class="contact textarea" rows="8" cols="500" name="your_message"></textarea></p>
+			<p><span><b>Image URL</b></span>
+			<input data-ng-model="updateCtrl.image" class="contact" type="text" name="image_link" value="" /></p>
+            <p style="padding-top: 15px"><span>&nbsp;</span>
+            <input data-ng-click="updateCtrl.send()" class="submit" type="submit" name="contact_submitted" value="Update" /></p>
+          </div><!--close form_settings-->
+</div><!--close contentpage-->

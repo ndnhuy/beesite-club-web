@@ -1,0 +1,81 @@
+
+
+<div id = "mainpage">
+<!--Thanh menu bên phải gồ: sing in, newest post, viewcount... -->
+<div id = "sidebar">
+	<div id="sidebar-header1" align="center"><b>Log In</b></div><!--close sidebar-content1-->
+	<div id="sidebar-item">
+			<form data-ng-if="articleCtrl.authenticated == false">
+			<p>{{articleCtrl.error}}</p>
+			<p>{{articleCtrl.registerError}}</p>
+			<table style="width:100%">
+			  <tr>
+			    <td>Usernames:</td>
+			    <td><input type="text" name="username" data-ng-model="articleCtrl.username"></td> 
+			  </tr>
+			  <tr>
+			    <td>Password:</td>
+			    <td><input type="text" name="password" data-ng-model="articleCtrl.password"></td> 
+			  </tr>
+			  <tr data-ng-if="articleCtrl.showRegister == true">
+			    <td>Email:</td>
+			    <td><input type="text" name="email" data-ng-model="articleCtrl.email" ></td> 
+			  </tr>
+			  <tr data-ng-if="articleCtrl.showRegister == true">
+			    <td>Name:</td>
+			    <td><input type="text" name="name" data-ng-model="articleCtrl.name" ></td> 
+			  </tr>
+			</table>
+
+		<center>
+			<button type="button" data-ng-click="articleCtrl.login()" data-ng-if="articleCtrl.showRegister == false">Login</button>
+			<button type="button" data-ng-click="articleCtrl.showRegisterForm()" data-ng-if="articleCtrl.showRegister == false">Signup</button>
+			<button type="button" data-ng-click="articleCtrl.register()" data-ng-if="articleCtrl.showRegister == true">Signup</button>
+			<button type="button" data-ng-click="articleCtrl.showLoginForm()" data-ng-if="articleCtrl.showRegister == true">Cancel</button>
+			<br>
+		</center>
+		</form>
+
+		<form data-ng-if="articleCtrl.authenticated == true">
+		<center>
+			Hello {{articleCtrl.username}}
+			<button data-ng-click="articleCtrl.logout()">Log out</button>
+		</center>
+		</form>
+
+	</div><!--close sidebar-item1-->
+	<div id="sidebar-header1" ><b>Search</b></div><!--sidebar-header2 close-->
+	<div id="sidebar-item">
+		<form>
+		<center>
+			<input type="text" name="txbSearch" size="35"><button type="button">Search</button>
+			<br>
+		</center>
+		</form>
+	</div><!--close sidebar-item2-->
+	
+</div><!--close sidebar-->
+
+<!--Nơi mình cho nội dung vô-->
+<div id = "contentpage">
+	<div id="content">
+        <div class="content_item">
+         <center><h3>Filter: <input type="text" ng-model="filterArticle.title" witdh="100px"></h3> </center>
+          <h2>Latest News</h2>
+             
+            	<div data-ng-repeat="article in articleCtrl.articles | filter: filterArticle">
+            		<a href="#/articles/{{article.id}}"><h3>{{article.title}}</h3></a>
+            		<div class="content_container">
+            		
+            		<a href="#/articles/{{article.id}}">
+            			<img src="{{article.image}}"/>
+            		</a>
+            		
+            		</div>
+            	</div>      
+			 
+    </div><!--close content-->	
+</div><!--close contentpage-->
+
+</div><!--close main page-->
+

@@ -1,0 +1,73 @@
+<div id = "mainpage">
+<!--Thanh menu bên phải gồm: sign in, newest post, viewcount... -->
+<div id = "sidebar">
+	<div id="sidebar-header1" align="center"><b>Log In</b></div><!--close sidebar-content1-->
+	<div id="sidebar-item">
+		<form data-ng-if="newArticleCtrl.authenticated == false">
+
+			<p>{{newArticleCtrl.error}}</p>
+			<p>{{newArticleCtrl.registerError}}</p>
+			<table style="width:100%">
+			  <tr>
+			    <td>Usernames:</td>
+			    <td><input type="text" name="username" data-ng-model="newArticleCtrl.username"></td> 
+			  </tr>
+			  <tr>
+			    <td>Password:</td>
+			    <td><input type="text" name="password" data-ng-model="newArticleCtrl.password"></td> 
+			  </tr>
+			  <tr data-ng-if="newArticleCtrl.showRegister == true">
+			    <td>Email:</td>
+			    <td><input type="text" name="email" data-ng-model="newArticleCtrl.email" ></td> 
+			  </tr>
+			  <tr data-ng-if="newArticleCtrl.showRegister == true">
+			    <td>Name:</td>
+			    <td><input type="text" name="name" data-ng-model="newArticleCtrl.name" ></td> 
+			  </tr>
+			</table>
+
+		<center>
+			<button type="button" data-ng-click="newArticleCtrl.login()" data-ng-if="newArticleCtrl.showRegister == false">Login</button>
+			<button type="button" data-ng-click="newArticleCtrl.showRegisterForm()" data-ng-if="newArticleCtrl.showRegister == false">Signup</button>
+			<button type="button" data-ng-click="newArticleCtrl.register()" data-ng-if="newArticleCtrl.showRegister == true">Signup</button>
+			<button type="button" data-ng-click="newArticleCtrl.showLoginForm()" data-ng-if="newArticleCtrl.showRegister == true">Cancel</button>
+			<br>
+		</center>
+		</form>
+		<form data-ng-if="newArticleCtrl.authenticated == true">
+		<center>
+			Hello {{newArticleCtrl.username}}
+			<button data-ng-click="newArticleCtrl.logout()">Log out</button>
+		</center>
+		</form>
+
+	</div><!--close sidebar-item1-->
+	<div id="sidebar-header1" ><b>Search</b></div><!--sidebar-header2 close-->
+	<div id="sidebar-item">
+		<form>
+		<center>
+			<input type="text" name="txbSearch" size="35"><button type="button">Search</button>
+			<br>
+		</center>
+		</form>
+	</div><!--close sidebar-item2-->
+	
+</div><!--close sidebar-->
+
+<!--Nơi mình cho nội dung vô-->
+<div id = "contentpage">
+	<div class="form_settings">
+            <h2>Update article</h2>
+            <p>Please enter all field in below</p>
+			<p><span>Title</span>
+			<input data-ng-model="newArticleCtrl.title" class="contact" type="text" name="post_name" value="" /></p>
+			<p><span>Tag</span>
+			<input data-ng-model="newArticleCtrl.tag" class="contact" type="text" name="post_type" value="" /></p>
+			<p><span>Content</span>
+			<textarea data-ng-model="newArticleCtrl.content" class="contact textarea" rows="8" cols="50" name="your_message"></textarea></p>
+			<p><span>Image URL</span>
+			<input data-ng-model="newArticleCtrl.image" class="contact" type="text" name="image_link" value="" /></p>
+            <p style="padding-top: 15px"><span>&nbsp;</span>
+            <input data-ng-click="newArticleCtrl.send()" class="submit" type="submit" name="contact_submitted" value="Send" /></p>
+          </div><!--close form_settings-->
+</div><!--close contentpage-->

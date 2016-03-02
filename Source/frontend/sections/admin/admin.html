@@ -1,0 +1,97 @@
+
+
+<div id = "mainpage">
+<!--Thanh menu bên phải gồm: sign in, newest post, viewcount... -->
+<div id = "sidebar">
+	<div id="sidebar-header1" align="center"><b>Log In</b></div><!--close sidebar-content1-->
+	<div id="sidebar-item">
+		<form data-ng-if="articleManagementCtrl.authenticated == false">
+
+			<p>{{articleManagementCtrl.error}}</p>
+			<p>{{articleManagementCtrl.registerError}}</p>
+			<table style="width:100%">
+			  <tr>
+			    <td>Usernames:</td>
+			    <td><input type="text" name="username" data-ng-model="articleManagementCtrl.username"></td> 
+			  </tr>
+			  <tr>
+			    <td>Password:</td>
+			    <td><input type="text" name="password" data-ng-model="articleManagementCtrl.password"></td> 
+			  </tr>
+			  <tr data-ng-if="articleManagementCtrl.showRegister == true">
+			    <td>Email:</td>
+			    <td><input type="text" name="email" data-ng-model="articleManagementCtrl.email" ></td> 
+			  </tr>
+			  <tr data-ng-if="articleManagementCtrl.showRegister == true">
+			    <td>Name:</td>
+			    <td><input type="text" name="name" data-ng-model="articleManagementCtrl.name" ></td> 
+			  </tr>
+			</table>
+
+		<center>
+			<button type="button" data-ng-click="articleManagementCtrl.login()" data-ng-if="articleManagementCtrl.showRegister == false">Login</button>
+			<button type="button" data-ng-click="articleManagementCtrl.showRegisterForm()" data-ng-if="articleManagementCtrl.showRegister == false">Signup</button>
+			<button type="button" data-ng-click="articleManagementCtrl.register()" data-ng-if="articleManagementCtrl.showRegister == true">Signup</button>
+			<button type="button" data-ng-click="articleManagementCtrl.showLoginForm()" data-ng-if="articleManagementCtrl.showRegister == true">Cancel</button>
+			<br>
+		</center>
+		</form>
+		<form data-ng-if="articleManagementCtrl.authenticated == true">
+		<center>
+			Hello {{articleManagementCtrl.username}}
+			<button data-ng-click="articleManagementCtrl.logout()">Log out</button>
+		</center>
+		</form>
+
+	</div><!--close sidebar-item1-->
+	<div id="sidebar-header1" ><b>Search</b></div><!--sidebar-header2 close-->
+	<div id="sidebar-item">
+		<form>
+		<center>
+			<input type="text" name="txbSearch" size="35"><button type="button">Search</button>
+			<br>
+		</center>
+		</form>
+	</div><!--close sidebar-item2-->
+	
+</div><!--close sidebar-->
+
+<!--Nơi mình cho nội dung vô-->
+<div id = "contentpage">
+	<h3 data-ng-if="articleManagementCtrl.username != 'admin' && articleManagementCtrl.authenticated == false" >You're not allowed to access here.</h3>
+	<h3 data-ng-if="articleManagementCtrl.username == 'admin' && articleManagementCtrl.authenticated == false" >You're not allowed to access here.</h3>
+
+	<div id="content" data-ng-if="articleManagementCtrl.username == 'admin' && articleManagementCtrl.authenticated == true">
+        <div class="content_item">
+         <center><h3>Filter: <input type="text" ng-model="filterArticle.title" witdh="100px"></h3> </center>
+          <h2>Latest News</h2>
+          <center>
+            <table border="1" style="width:90%"> 
+            	<div>
+                    <tr data-ng-repeat="article in articleManagementCtrl.articles | filter: filterArticle">
+                    <td><a href="#/articles/{{article.id}}">{{article.title}}</a></td>
+                    <td>{{article.tag}}</td>
+                    <td><button type="button" data-ng-click="articleManagementCtrl.deleteArticleById(article.id)">DELETE</button></td> 
+                    <td><button type="button"><a href="#/admin/articles/{{article.id}}/update">EDIT</a></button></td>
+                    </tr>
+                </div>
+            </table>
+            </center>
+	    </div><!--close content_item-->
+		<div class="button_small_right">
+			<a href="#/admin/articles/create">NEW</a>
+		</div>
+    </div><!--close content-->	
+</div><!--close contentpage-->
+
+</div><!--close main page-->
+
+<!--Thông tin nhóm-->
+<div id = "footer">
+	Trường Đại học Khoa học tự nhiên<br>
+	Câu lạc bộ tiếng Anh BEE Club<br>	
+	<hr>
+	<center>1212154_Phạm Thanh Huy</center>
+	<center>1212397_Đoàn Thị Bích Thùy</center>
+	<center>1212152_Nguễn Nhật Huy</center>
+</div>
